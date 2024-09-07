@@ -60,7 +60,7 @@ def get_conversation_chain(vector_store):
     llm = ChatOpenAI()
     
     # llm = HuggingFaceHub(repo_id="google/flan-t5-xxl", model_kwargs={"temperature":0.5, "max_length":512}, 
-    #                      huggingfacehub_api_token = "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")
+    #                      huggingfacehub_api_token = "")
     
     # llm.client.api_url = "https://api-inference.huggingface.co/models/google/flan-t5-base"
 
