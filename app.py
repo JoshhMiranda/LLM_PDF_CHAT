@@ -4,7 +4,8 @@ from PyPDF2 import PdfReader
 from langchain.text_splitter import CharacterTextSplitter
 
 from langchain.embeddings import OpenAIEmbeddings, HuggingFaceInstructEmbeddings
-from langchain.vectorstores import FAISS
+# from langchain.vectorstores import FAISS
+from langchain_community.vectorstores import Chroma
 
 # create/ allocate  memory to remeber conversation context
 from langchain.memory import ConversationBufferMemory
@@ -47,7 +48,8 @@ def get_vector_store(text_chunks):
     # os.environ["OPENAI_API_KEY"] = ""
     embeddings = OpenAIEmbeddings()
     # embeddings = HuggingFaceInstructEmbeddings(model_name = "hkunlp/instructor-xl")
-    vector_store = FAISS.from_texts(texts = text_chunks, embedding = embeddings)
+    # vector_store = FAISS.from_texts(texts = text_chunks, embedding = embeddings)
+    vector_store = Chroma.from_documents(text_chunks, embedding = embeddings)
     return vector_store
 
 
